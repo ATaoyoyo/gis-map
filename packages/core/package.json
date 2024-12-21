@@ -1,0 +1,46 @@
+{
+  "name": "gis-map",
+  "version": "1.0.0",
+  "description": "Cesium Components By Vue3 + TS",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "./dist/index.css",
+    "./dist/theme/*.css"
+  ],
+  "main": "./dist/umd/index.umd.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/core/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/umd/index.umd.cjs",
+      "types": "./dist/types/core/index.d.ts"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "scripts": {
+    "build": "run-s build:only move-style",
+    "build:only": "run-p build:umd build:es",
+    "build:umd": "vite build --config vite.umd.config.ts",
+    "build:es": "vite build --config vite.es.config.ts",
+    "move-style": "move-file dist/es/index.css dist/index.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@gis-map/components": "workspace:*",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-static-copy": "^2.2.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.19"
+  }
+}
